@@ -17,7 +17,7 @@ void setup() {
 } 
 
 var dnaSize = 1;
-var twistiness = 30;
+var twistiness = 10;
 
 var backgroundLight = 0.1;
 
@@ -53,10 +53,10 @@ var edgeColor = color(0, 0, 0);
 var nodeSize = 8;
 
 var keys = [];
-var keyPressed = function() {
+void keyPressed() {
     keys[keyCode] = true;
 };
-var keyReleased = function() {
+void keyReleased() {
     keys[keyCode] = false;
 };
 
@@ -352,16 +352,16 @@ void draw() {
         }
     
         if (keys[LEFT]) {
-            rotateYSide(-1,nodes,molecules[a]);
+            rotateYSide(-0.2, nodes, molecules[a]);
         }
         if (keys[RIGHT]) {
-            rotateYSide(1, nodes,molecules[a]);
+            rotateYSide(0.2, nodes, molecules[a]);
         }
         if (keys[UP]) {
-            rotateXSide(1, nodes,molecules[a]);
+            rotateXSide(0.2, nodes, molecules[a]);
         }
         if (keys[DOWN]) {
-            rotateXSide(-1, nodes,molecules[a]);
+            rotateXSide(-0.2, nodes, molecules[a]);
         }
     }
     popMatrix();
@@ -384,16 +384,14 @@ void draw() {
     textAlign(LEFT,BASELINE);
 };
 
-//var mouseDragged = function() {
 void mouseDragged() {
     for (var a = 0; a < molecules.length; a ++) {
         var nodes = molecules[a].nodes;
-        rotateYSide((mouseX-pmouseX),nodes,molecules[a]);
-        rotateXSide(-(mouseY-pmouseY),nodes,molecules[a]);
+        rotateYSide((mouseX-pmouseX) / 8, nodes, molecules[a]);
+        rotateXSide(-(mouseY-pmouseY) / 8, nodes, molecules[a]);
     }
 };
 
-//var mouseReleased = function() {
 void mouseReleased() {
     if (mouseX > 290 && mouseX < 390 && mouseY > 10 && mouseY < 70) {
         mode ++;
