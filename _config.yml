@@ -1,0 +1,4 @@
+name: DNA Project
+markdown: redcarpet
+pygments: true
+baseurl: /dna
