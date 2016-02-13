@@ -379,10 +379,8 @@ void draw() {
     textAlign(LEFT,BASELINE);
 };
 
-void mouseClicked = function() {
-    console.log('test');
+void mouseClicked() {
     if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
-        console.log('it works');
         mode ++;
     }
 };
