@@ -356,19 +356,8 @@ var menu = function() {
         fill(138, 138, 138);
         rect(width - menuX,0,menuX,height);
         
-        textSize(10);
+        textSize(15);
         fill(0, 0, 0);
-        
-        //regButton(width - menuX + 25,20 - menuY,90,20,(mode % 2 === 1) ? 'Transparent' : 'Opaque',function() { mode ++; });
-        //regButton(width - menuX + 50,52 - menuY,20,20,'-',function() { modelSize -= 0.25; });
-        //regButton(width - menuX + 175,52 - menuY,20,20,'+',function() { modelSize += 0.25; });
-        
-        //translate(-menuX,-menuY);
-        //textSize(20);
-        //text('View',width + 150,38);
-        //text('Size',width + 100,70);
-        //textSize(10);
-        //text(essay,width + 5,100,210,Infinity);
     }
     popMatrix();
 };
