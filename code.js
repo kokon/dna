@@ -370,21 +370,6 @@ var menu = function() {
         //textSize(10);
         //text(essay,width + 5,100,210,Infinity);
     }
-    translate(0,menuY);
-    if (menuY > 0) {
-        fill(77, 77, 77);
-        triangle(width + 225,150,width + 220, 180, width + 230, 180);
-        if (mouseIsPressed && inTri(mouseX,mouseY,width + 225 - menuX,150,width + 220 - menuX,180,width + 230 - menuX,180)) {
-            menuY -= 2;
-        }
-    }
-    if (menuY < 250) {
-        fill(77, 77, 77);
-        triangle(width + 225,250,width + 220, 220, width + 230, 220);
-        if (mouseIsPressed && inTri(mouseX,mouseY,width + 225 - menuX,250,width + 220 - menuX,220,width + 230 - menuX,220)) {
-            menuY += 2;
-        }
-    }
     popMatrix();
 };
 
