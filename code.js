@@ -253,11 +253,10 @@ var pattern = function() {
     for (var x = 0; x < width/144; x ++) {
         for (var i = 0; i < 144; i ++) {
             for (var a = 0; a < height/100; a ++) {
-                
                 if (i % 5 === 0) {
-                strokeWeight(3);
-                point(i + sin(i*10*57.2958)*10 + x * 144,100 - i + sin(i*10*57.2958)*10 + a * 144);
-                point(i + -sin(i*10*57.2958)*10 + x * 144,100 - i + -sin(i*10*57.2958)*10 + a * 144);
+                    strokeWeight(3);
+                    point(i + sin(i*10*57.2958)*10 + x * 144,100 - i + sin(i*10*57.2958)*10 + a * 144);
+                    point(i + -sin(i*10*57.2958)*10 + x * 144,100 - i + -sin(i*10*57.2958)*10 + a * 144);
                     strokeWeight(1);
                     line(i + sin(i*10*57.2958)*10 + x * 144,100 - i + sin(i*10*57.2958)*10 + a * 144, i + -sin(i*10*57.2958)*10 + x * 144,100 - i + -sin(i*10*57.2958)*10 + a * 144);
                 }
@@ -315,7 +314,77 @@ var zSort = function(list){
     return alist;
 };
 
+var mouseIn = function(x,y,w,h) {
+    if (mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h) { return true; }
+    return false;
+};
+var button = function(x,y,w,h,drawOff,drawOn,drawPress) {
+    if (drawOn === undefined) {
+        drawOn = drawOff;
+        drawPress = drawOff;
+    }
+    
+    if (!mouseIn(x,y,w,h)) { drawOff(x,y,w,h); }
+    if (mouseIn(x,y,w,h) && !mouseIsPressed) { drawOn(x,y,w,h); }
+    if (mouseIn(x,y,w,h) && mouseIsPressed) { drawPress(x,y,w,h); }
+    
+    if (mouseIn(x,y,w,h) && mouseIsClicked) { return true; }
+    
+    return false;
+};
+var menuButton = function(x,y,fn) {
+    var display = function(x,y,w,h) {
+        noStroke();
+        fill(82, 82, 82);
+        rect(x,y,w + 5,h + 5, 5);
+        fill(255, 255, 255);
+        rect(x + w/5 + 1, 1 + y + h/4,w/5*3,2,5);
+        rect(x + w/5 + 1, 1 + y + h/4*2,w/5*3,2,5);
+        rect(x + w/5 + 1, 1 + y + h/4*3,w/5*3,2,5);
+    };
+    if (button(x,y,25,20,display)) { fn(); }
+};
 
+var menuOut = false; //in
+var menuX = 0;
+var menuY = 0;
+var menu = function() {
+    pushMatrix();
+    if (menuX > 0) {
+        fill(138, 138, 138);
+        rect(width - menuX,0,menuX,height);
+        
+        textSize(10);
+        fill(0, 0, 0);
+        
+        regButton(width - menuX + 25,20 - menuY,90,20,(mode % 2 === 1) ? 'Transparent' : 'Opaque',function() { mode ++; });
+        regButton(width - menuX + 50,52 - menuY,20,20,'-',function() { modelSize -= 0.25; });
+        regButton(width - menuX + 175,52 - menuY,20,20,'+',function() { modelSize += 0.25; });
+        
+        translate(-menuX,-menuY);
+        textSize(20);
+        text('View',width + 150,38);
+        text('Size',width + 100,70);
+        textSize(10);
+        text(essay,width + 5,100,210,Infinity);
+    }
+    translate(0,menuY);
+    if (menuY > 0) {
+        fill(77, 77, 77);
+        triangle(width + 225,150,width + 220, 180, width + 230, 180);
+        if (mouseIsPressed && inTri(mouseX,mouseY,width + 225 - menuX,150,width + 220 - menuX,180,width + 230 - menuX,180)) {
+            menuY -= 2;
+        }
+    }
+    if (menuY < 250) {
+        fill(77, 77, 77);
+        triangle(width + 225,250,width + 220, 220, width + 230, 220);
+        if (mouseIsPressed && inTri(mouseX,mouseY,width + 225 - menuX,250,width + 220 - menuX,220,width + 230 - menuX,220)) {
+            menuY += 2;
+        }
+    }
+    popMatrix();
+};
 
 void draw() {
     background(backgroundColor);
@@ -399,9 +468,13 @@ void draw() {
     text('Transparent\nor\nOpaque',width-60,40);
     strokeWeight(1);
     textAlign(LEFT,BASELINE);
+    
+    menuButton(375-menuX,0,function() {menuOut = !menuOut;});
+    menu();
 };
 
 void mouseClicked() {
+    mouseIsClicked = true;
     if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
         mode ++;
     }
