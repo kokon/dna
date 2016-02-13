@@ -387,8 +387,10 @@ void mouseDragged() {
     }
 };
 
-void mouseReleased = function() {
+void mouseClicked = function() {
+    println('test')
     if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
+        println('it works')
         mode ++;
     }
 };
