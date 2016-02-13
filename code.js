@@ -254,12 +254,12 @@ var pattern = function() {
         for (var i = 0; i < 144; i ++) {
             for (var a = 0; a < height/100; a ++) {
                 strokeWeight(3);
-                point(i + sin(i*5)*10 + x * 144,100 - i + sin(i*5)*10 + a * 144);
-                point(i + -sin(i*5)*10 + x * 144,100 - i + -sin(i*5)*10 + a * 144  );
+                point(i + sin(i)*10 + x * 144,100 - i + sin(i)*10 + a * 144);
+                point(i + -sin(i)*10 + x * 144,100 - i + -sin(i)*10 + a * 144  );
                 
                 if (i % 5 === 0) {
                     strokeWeight(1);
-                    line(i + sin(i*5)*10 + x * 144,100 - i + sin(i*5)*10 + a * 144 , i + -sin(i*5)*10 + x * 144,100 - i + -sin(i*5)*10 + a * 144 );
+                    line(i + sin(i)*10 + x * 144,100 - i + sin(i)*10 + a * 144 , i + -sin(i)*10 + x * 144,100 - i + -sin(i)*10 + a * 144 );
                 }
             }
         }
