@@ -340,11 +340,11 @@ var menuButton = function(x,y,fn) {
         fill(82, 82, 82);
         rect(x,y,w + 5,h + 5, 5);
         fill(255, 255, 255);
-        rect(x + w/5 + 1, 1 + y + h/4,w/5*3,2,5);
-        rect(x + w/5 + 1, 1 + y + h/4*2,w/5*3,2,5);
-        rect(x + w/5 + 1, 1 + y + h/4*3,w/5*3,2,5);
+        rect(x + 6, y + 1 + 5  ,13,2,5);
+        rect(x + 6, y + 1 + 5*2,13,2,5);
+        rect(x + 6, y + 1 + 5*3,13,2,5);
     };
-    if (button(x,y,25,20,display)) { fn(); }
+    if (button(x,y,20,25,display)) { fn(); }
 };
 
 var menuOut = false; //in
@@ -354,11 +354,13 @@ var menu = function() {
     pushMatrix();
     if (menuX > 0) {
         fill(138, 138, 138);
-        rect(width - menuX,0,menuX,height);
+        rect(0,height - menuY,width,menuY);
         
-        textSize(15);
+        textSize(10);
         fill(0, 0, 0);
+        
     }
+    translate(0,menuY);
     popMatrix();
 };
 
@@ -445,11 +447,11 @@ void draw() {
     strokeWeight(1);
     textAlign(LEFT,BASELINE);
     
-    menuButton(width-25-menuX,0,function() {menuOut = !menuOut;});
+    menuButton(width-25,height-25-menuY,function() {menuOut = !menuOut;});
     menu();
     
-    if (menuOut && menuX < 250) { menuX += sq(((250-menuX)/30)) + 1; }
-    if (!menuOut && menuX > 0) { menuX -= sq(menuX/30) + 1; }
+    if (menuOut && menuY < 150) { menuY += sq(((150-menuY)/30)) + 1; }
+    if (!menuOut && menuY > 0) { menuY -= sq(menuY/30) + 1; }
     mouseIsClicked = false;
 };
 
