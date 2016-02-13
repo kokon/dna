@@ -21,7 +21,9 @@ var twistiness = 10;
 
 var backgroundLight = 0.1;
 
-var backgroundColor = color(255, 255, 255);
+var backgroundColor = color(250, 192, 243);
+var patternColor = color(255, 255, 255);
+
 var adenineColor = color(255, 0, 0);
 var thymineColor = color(255, 123, 0);
 var cytosineColor = color(0, 0, 255);
@@ -246,6 +248,25 @@ var legend = function() {
     text('Phosphate',30,122);
 };
 
+var pattern = function() {
+    stroke(patternColor);
+    for (var x = 0; x < width/105; x ++) {
+        for (var i = 0; i < 105; i ++) {
+            for (var a = 0; a < height/100; a ++) {
+                strokeWeight(3);
+                point(i + sin(i*5)*10 + x * 105,100 - i + sin(i*5)*10 + a * 100);
+                point(i + -sin(i*5)*10 + x * 105,100 - i + -sin(i*5)*10 + a * 100);
+                
+                if (i % 5 === 0) {
+                    strokeWeight(1);
+                    line(i + sin(i*5)*10 + x * 105,100 - i + sin(i*5)*10 + a * 100, i + -sin(i*5)*10 + x * 105,100 - i + -sin(i*5)*10 + a * 100);
+                }
+            }
+        }
+    }
+    strokeWeight(1);
+};
+
 for (var i = 0; i < dnaSetup.length; i ++) {
     var interval = i*100-dnaSetup.length*100/2;
     
@@ -298,6 +319,7 @@ var zSort = function(list){
 
 void draw() {
     background(backgroundColor);
+    pattern();
     
     dnaCheck();
     legend();
