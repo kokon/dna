@@ -346,7 +346,7 @@ var menu = function() {
     pushMatrix();
     if (menuY > 0) {
         fill(138, 138, 138);
-        rect(0,height - menuY,width,menuY);
+        rect(width - 600,height - menuY,600,menuY);
         
         textSize(10);
         fill(0, 0, 0);
