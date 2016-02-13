@@ -379,18 +379,18 @@ void draw() {
     textAlign(LEFT,BASELINE);
 };
 
-void mouseDragged() {
-    for (var a = 0; a < molecules.length; a ++) {
-        var nodes = molecules[a].nodes;
-        rotateYSide((mouseX-pmouseX) / 64, nodes, molecules[a]);
-        rotateXSide(-(mouseY-pmouseY) / 64, nodes, molecules[a]);
-    }
-};
-
 void mouseClicked = function() {
     console.log('test');
     if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
         console.log('it works');
         mode ++;
+    }
+};
+
+void mouseDragged() {
+    for (var a = 0; a < molecules.length; a ++) {
+        var nodes = molecules[a].nodes;
+        rotateYSide((mouseX-pmouseX) / 64, nodes, molecules[a]);
+        rotateXSide(-(mouseY-pmouseY) / 64, nodes, molecules[a]);
     }
 };
