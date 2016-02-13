@@ -384,8 +384,8 @@ void draw() {
 void mouseDragged() {
     for (var a = 0; a < molecules.length; a ++) {
         var nodes = molecules[a].nodes;
-        rotateYSide((mouseX-pmouseX) / 16, nodes, molecules[a]);
-        rotateXSide(-(mouseY-pmouseY) / 16, nodes, molecules[a]);
+        rotateYSide((mouseX-pmouseX) / 32, nodes, molecules[a]);
+        rotateXSide(-(mouseY-pmouseY) / 32, nodes, molecules[a]);
     }
 };
 
