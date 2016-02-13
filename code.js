@@ -52,6 +52,8 @@ var nodeColor = color(255, 0, 0);
 var edgeColor = color(0, 0, 0);
 var nodeSize = 8;
 
+var mouseIsClicked = false;
+
 var keys = [];
 void keyPressed() {
     keys[keyCode] = true;
@@ -471,6 +473,8 @@ void draw() {
     
     menuButton(375-menuX,0,function() {menuOut = !menuOut;});
     menu();
+    
+    mouseIsClicked = false;
 };
 
 void mouseClicked() {
