@@ -388,9 +388,9 @@ void mouseDragged() {
 };
 
 void mouseClicked = function() {
-    println('test');
+    console.log('test');
     if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
-        println('it works');
+        console.log('it works');
         mode ++;
     }
 };
