@@ -347,16 +347,16 @@ void draw() {
         }
     
         if (keys[LEFT]) {
-            rotateYSide(-1,nodes,molecules[a]);
+            rotateYSide(-0.05,nodes,molecules[a]);
         }
         if (keys[RIGHT]) {
-            rotateYSide(1, nodes,molecules[a]);
+            rotateYSide(0.05, nodes,molecules[a]);
         }
         if (keys[UP]) {
-            rotateXSide(1, nodes,molecules[a]);
+            rotateXSide(0.05, nodes,molecules[a]);
         }
         if (keys[DOWN]) {
-            rotateXSide(-1, nodes,molecules[a]);
+            rotateXSide(-0.05, nodes,molecules[a]);
         }
     }
     popMatrix();
