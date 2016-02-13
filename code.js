@@ -320,16 +320,8 @@ var mouseIn = function(x,y,w,h) {
     if (mouseX >= x && mouseX <= x + w && mouseY >= y && mouseY <= y + h) { return true; }
     return false;
 };
-var button = function(x,y,w,h,drawOff,drawOn,drawPress) {
-    if (drawOn === undefined) {
-        drawOn = drawOff;
-        drawPress = drawOff;
-    }
-    
-    if (!mouseIn(x,y,w,h)) { drawOff(x,y,w,h); }
-    if (mouseIn(x,y,w,h) && !mouseIsPressed) { drawOn(x,y,w,h); }
-    if (mouseIn(x,y,w,h) && mouseIsPressed) { drawPress(x,y,w,h); }
-    
+var button = function(x,y,w,h,drawButton) {
+    drawButton();
     if (mouseIn(x,y,w,h) && mouseIsClicked) { return true; }
     
     return false;
@@ -352,7 +344,7 @@ var menuX = 0;
 var menuY = 0;
 var menu = function() {
     pushMatrix();
-    if (menuX > 0) {
+    if (menuY > 0) {
         fill(138, 138, 138);
         rect(0,height - menuY,width,menuY);
         
@@ -360,7 +352,6 @@ var menu = function() {
         fill(0, 0, 0);
         
     }
-    translate(0,menuY);
     popMatrix();
 };
 
