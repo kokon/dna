@@ -44,7 +44,7 @@ var dnaSetup = [
 ];
 
 smooth();
-var mode = 2;
+var mode = 1;
 
 var nodeColor = color(255, 0, 0);
 var edgeColor = color(0, 0, 0);
