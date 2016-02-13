@@ -13,7 +13,7 @@
 
 
 void setup() { 
-  size(400, 400); 
+  size(1000, 600); 
 } 
 
 var dnaSize = 1;
@@ -299,22 +299,19 @@ var zSort = function(list){
 
 
 void draw() {
-    translate(200,200);
     background(backgroundColor);
     
     dnaCheck();
     legend();
     
     pushMatrix();
-    scale(0.25);
+    translate(width/2,height/2);
+    scale(height/400*0.25);
     scale(dnaSize);
     
     molecules.sort(function(a, b) {
         return b.z - a.z;
     });
-    //println("val:"+molecules[0].z + " " + molecules[molecules.length-1].z);
-    //molecules = zSort(molecules);
-    //molecules.reverse();
     
     for (var a = 0; a < molecules.length; a ++) {
         var nodes = molecules[a].nodes;
@@ -352,16 +349,16 @@ void draw() {
         }
     
         if (keys[LEFT]) {
-            rotateYSide(-0.2, nodes, molecules[a]);
+            rotateYSide(-1,nodes,molecules[a]);
         }
         if (keys[RIGHT]) {
-            rotateYSide(0.2, nodes, molecules[a]);
+            rotateYSide(1, nodes,molecules[a]);
         }
         if (keys[UP]) {
-            rotateXSide(0.2, nodes, molecules[a]);
+            rotateXSide(1, nodes,molecules[a]);
         }
         if (keys[DOWN]) {
-            rotateXSide(-0.2, nodes, molecules[a]);
+            rotateXSide(-1, nodes,molecules[a]);
         }
     }
     popMatrix();
@@ -376,10 +373,10 @@ void draw() {
     stroke(0, 102, 7);
     strokeWeight(3);
     fill(82, 82, 82);
-    rect(90,-190, 100,60,8);
+    rect(width-110,10, 100,60,8);
     fill(0, 0, 0);
     textAlign(CENTER,CENTER);
-    text('Transparent\nor\nOpaque',140,-160);
+    text('Transparent\nor\nOpaque',width-60,40);
     strokeWeight(1);
     textAlign(LEFT,BASELINE);
 };
@@ -387,14 +384,13 @@ void draw() {
 void mouseDragged() {
     for (var a = 0; a < molecules.length; a ++) {
         var nodes = molecules[a].nodes;
-        rotateYSide((mouseX-pmouseX) / 8, nodes, molecules[a]);
-        rotateXSide(-(mouseY-pmouseY) / 8, nodes, molecules[a]);
+        rotateYSide((mouseX-pmouseX) / 16, nodes, molecules[a]);
+        rotateXSide(-(mouseY-pmouseY) / 16, nodes, molecules[a]);
     }
 };
 
-void mouseReleased() {
-    if (mouseX > 290 && mouseX < 390 && mouseY > 10 && mouseY < 70) {
+void mouseReleased = function() {
+    if (mouseX > width-110 && mouseX < width-10 && mouseY > 10 && mouseY < 70) {
         mode ++;
     }
 };
-
