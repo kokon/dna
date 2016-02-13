@@ -359,16 +359,16 @@ var menu = function() {
         textSize(10);
         fill(0, 0, 0);
         
-        regButton(width - menuX + 25,20 - menuY,90,20,(mode % 2 === 1) ? 'Transparent' : 'Opaque',function() { mode ++; });
-        regButton(width - menuX + 50,52 - menuY,20,20,'-',function() { modelSize -= 0.25; });
-        regButton(width - menuX + 175,52 - menuY,20,20,'+',function() { modelSize += 0.25; });
+        //regButton(width - menuX + 25,20 - menuY,90,20,(mode % 2 === 1) ? 'Transparent' : 'Opaque',function() { mode ++; });
+        //regButton(width - menuX + 50,52 - menuY,20,20,'-',function() { modelSize -= 0.25; });
+        //regButton(width - menuX + 175,52 - menuY,20,20,'+',function() { modelSize += 0.25; });
         
-        translate(-menuX,-menuY);
-        textSize(20);
-        text('View',width + 150,38);
-        text('Size',width + 100,70);
-        textSize(10);
-        text(essay,width + 5,100,210,Infinity);
+        //translate(-menuX,-menuY);
+        //textSize(20);
+        //text('View',width + 150,38);
+        //text('Size',width + 100,70);
+        //textSize(10);
+        //text(essay,width + 5,100,210,Infinity);
     }
     translate(0,menuY);
     if (menuY > 0) {
@@ -471,7 +471,7 @@ void draw() {
     strokeWeight(1);
     textAlign(LEFT,BASELINE);
     
-    menuButton(375-menuX,0,function() {menuOut = !menuOut;});
+    menuButton(width-25-menuX,0,function() {menuOut = !menuOut;});
     menu();
     
     mouseIsClicked = false;
