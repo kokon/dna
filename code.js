@@ -16,7 +16,7 @@ void setup() {
   size(1600, 950); 
 } 
 
-var dnaSize = 2;
+var dnaSize = 1;
 var twistiness = 10;
 
 var backgroundLight = 0.1;
@@ -43,10 +43,8 @@ var dnaSetup = [
     ['c','g']
 ];
 
-//Non-user code can be accessed with the blue button. Be careful when editing, you could make a bug.
-
 smooth();
-var mode = 1;
+var mode = 2;
 
 var nodeColor = color(255, 0, 0);
 var edgeColor = color(0, 0, 0);
