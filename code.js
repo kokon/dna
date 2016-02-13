@@ -13,7 +13,7 @@
 
 
 void setup() { 
-  size(1600, 1000); 
+  size(1600, 950); 
 } 
 
 var dnaSize = 1;
@@ -384,8 +384,8 @@ void draw() {
 void mouseDragged() {
     for (var a = 0; a < molecules.length; a ++) {
         var nodes = molecules[a].nodes;
-        rotateYSide((mouseX-pmouseX) / 32, nodes, molecules[a]);
-        rotateXSide(-(mouseY-pmouseY) / 32, nodes, molecules[a]);
+        rotateYSide((mouseX-pmouseX) / 64, nodes, molecules[a]);
+        rotateXSide(-(mouseY-pmouseY) / 64, nodes, molecules[a]);
     }
 };
 
