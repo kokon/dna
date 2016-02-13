@@ -13,7 +13,7 @@
 
 
 void setup() { 
-  size(1000, 600); 
+  size(1600, 1200); 
 } 
 
 var dnaSize = 1;
@@ -224,28 +224,28 @@ var dnaCheck = function() {
 var legend = function() {
     noStroke();
     fill(adenineColor);
-    rect(-190,-190,15,15);
-    text('Adenine',-170,-178);
+    rect(10,10,15,15);
+    text('Adenine',30,22);
     
     fill(thymineColor);
-    rect(-190,-170,15,15);
-    text('Thymine',-170,-158);
+    rect(10,30,15,15);
+    text('Thymine',30,42);
     
     fill(cytosineColor);
-    rect(-190,-150,15,15);
-    text('Cytosine',-170,-138);
+    rect(10,50,15,15);
+    text('Cytosine',30,62);
     
     fill(guanineColor);
-    rect(-190,-130,15,15);
-    text('Guanine',-170,-118);
+    rect(10,70,15,15);
+    text('Guanine',30,82);
     
     fill(deoxyriboseColor);
-    rect(-190,-110,15,15);
-    text('Deoxyribose',-170,-98);
+    rect(10,90,15,15);
+    text('Deoxyribose',30,102);
     
     fill(phosphateColor);
-    rect(-190,-90,15,15);
-    text('Phosphate',-170,-78);
+    rect(10,110,15,15);
+    text('Phosphate',30,122);
 };
 
 for (var i = 0; i < dnaSetup.length; i ++) {
