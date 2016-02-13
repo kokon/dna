@@ -321,7 +321,7 @@ var mouseIn = function(x,y,w,h) {
     return false;
 };
 var button = function(x,y,w,h,drawButton) {
-    drawButton();
+    drawButton(x,y,w,h);
     if (mouseIn(x,y,w,h) && mouseIsClicked) { return true; }
     
     return false;
