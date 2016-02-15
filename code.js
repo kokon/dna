@@ -17,7 +17,7 @@ void setup() {
 } 
 
 var dnaSize = 1;
-var twistiness = 10;
+var twistiness = 20;
 
 var backgroundLight = 0.1;
 
@@ -342,17 +342,77 @@ var menuButton = function(x,y,fn) {
 var menuOut = false; //in
 var menuX = 0;
 var menuY = 0;
+var menuMode = 'dna';
+var menuMessage = 'DNA, or DeoxyriboNucleic Acid, is the main form that genetic material takes in your body, like your body’s own instruction manual. All living spicies on Earth have DNA, but no person has exact same version as another. With DNA, all of the cells in your body get the same copy. However, not all of your cells share the same purpose. For example, your stomach cells don’t do the same thing as your heart cells. DNA doesn’t care. Think of your DNA as a large book of instructions, your body as a large corporation whose job is to survive, and your cells as individual workers. The same book is given to all of them, but when a worker receives it, they don’t need to read the instructions for everyone else. They simply flip to their chapter, and read what they have to do.';
 var menu = function() {
-    pushMatrix();
     if (menuY > 0) {
         fill(138, 138, 138);
         rect(width - 600,height - menuY,610,menuY,5);
         
-        textSize(10);
         fill(0, 0, 0);
+        text(menuMessage,width-500,height-menuY+10,500,Infinity);
         
+        fill(102, 102, 102);
+        strokeWeight(2);
+        stroke(0, 0, 0);
+        rect(width-598,height-menuY+28,80,40);
+        rect(width-598,height-menuY+68,80,40);
+        rect(width-598,height-menuY+108,80,40);
+        strokeWeight(1);
+        noStroke();
+        
+        textAlign(CENTER,CENTER);
+        fill(0, 0, 0);
+        textSize(14);
+        text('What is\nDNA?',width-560,height-menuY+48);
+        text('Storage',width-560,height-menuY+88);
+        text('How is it\nread?',width-560,height-menuY+128);
+        textSize(12);
+        textAlign(LEFT,BASELINE);
+        
+        fill(0, 0, 0, 20);
+        if (mouseIn(width-598,height-menuY+28,80,40)) {
+            rect(width-598,height-menuY+28,80,40);
+            if (mouseIsPressed) {
+                rect(width-598,height-menuY+28,80,40);
+            }
+            if (mouseIsClicked) {
+                menuMode = 'dna';
+                menuMessage = 'DNA, or DeoxyriboNucleic Acid, is the main form that genetic material takes in your body, like your body’s own instruction manual. All living spicies on Earth have DNA, but no person has exact same version as another. With DNA, all of the cells in your body get the same copy. However, not all of your cells share the same purpose. For example, your stomach cells don’t do the same thing as your heart cells. DNA doesn’t care. Think of your DNA as a large book of instructions, your body as a large corporation whose job is to survive, and your cells as individual workers. The same book is given to all of them, but when a worker receives it, they don’t need to read the instructions for everyone else. They simply flip to their chapter, and read what they have to do.';
+            }
+        }
+        if (mouseIn(width-598,height-menuY+68,80,40)) {
+            rect(width-598,height-menuY+68,80,40);
+            if (mouseIsPressed) {
+                rect(width-598,height-menuY+68,80,40);
+            }
+            if (mouseIsClicked) {
+                menuMode = 'chromosomes';
+                menuMessage = 'As you can see, in order to have enough information to instruct an entire living object, you would need a whole lot of DNA, especially since each cell needs all the information for each of the other cells, as well. In fact, if you were to line up all of the DNA in your whole body from each of your cells combined end to end, you would end up with a string so long, it could go from the Earth to the Sun 100 times! So how does your body store it? Actually, it’s a lot like making rope.  A strand of DNA twirls itself in a spiral, making a slightly thicker but a lot shorter “string”. The “string” repeats that process to make itself even shorter and thicker. Repeat this process several times, and you’re left over with a chromosome, a strand of DNA that’s been compressed using that process. The human body has 23 pairs of chromosomes adding up to 46. The amount of chromosomes differs from each species.';
+            }
+        }
+        if (mouseIn(width-598,height-menuY+108,80,40)) {
+            rect(width-598,height-menuY+108,80,40);
+            if (mouseIsPressed) {
+                rect(width-598,height-menuY+108,80,40);
+            }
+            if (mouseIsClicked) {
+                menuMode = 'rna';
+                menuMessage = 'Your DNA is stored in chromosomes in your nucleus, but it can’t read itself. Ten million ribosomes wait outside of the nucleus to do this for you. However, you have lots of DNA, so it can’t all go outside of the nucleus. Your cell makes a copy of the gene it wants to use, called mRNA, standing for messenger RiboNucleic Acid. The only difference is the nucleotide Thymine, in DNA, which gets turned into Uracil in the mRNA. The mRNA leaves the nucleus, now small enough to do so, and finds its way to a ribosome to begin translation. During translation, “codons”, or groups of 3 nucleotides, are read by tRNA, standing for transfer RNA, to be translated into amino acids, which are then made by the ribosomes to be used.';
+            }
+        }
+        
+        fill(0, 0, 0, 60);
+        if (menuMode === 'dna') {
+            rect(width-598,height-menuY+28,80,40);
+        }
+        if (menuMode === 'chromosomes') {
+            rect(width-598,height-menuY+68,80,40);
+        }
+        if (menuMode === 'rna') {
+            rect(width-598,height-menuY+108,80,40);
+        }
     }
-    popMatrix();
 };
 
 void draw() {
