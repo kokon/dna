@@ -17,7 +17,7 @@ void setup() {
 } 
 
 var dnaSize = 1;
-var twistiness = 20;
+var twistiness = 5;
 
 var backgroundLight = 0.1;
 
