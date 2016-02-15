@@ -13,7 +13,7 @@
 
 
 void setup() { 
-  size(1000, 600); 
+  size(1400, 700); 
 } 
 
 var dnaSize = 1;
