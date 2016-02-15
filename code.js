@@ -415,6 +415,37 @@ var menu = function() {
     }
 };
 
+var helpIcon = function(x,y,txt) {
+    fill(87, 87, 87);
+    ellipse(x,y,15,15);
+    
+    textAlign(CENTER,CENTER);
+    textSize(10);
+    fill(255, 255, 255);
+    text('?',x,y);
+    textAlign(LEFT,BASELINE);
+    textSize(12);
+    
+    if (dist(x,y,mouseX,mouseY) < 7.5) {
+        stroke(173, 138, 0);
+        fill(242, 211, 119);
+        beginShape();
+        vertex(mouseX,mouseY);
+        vertex(mouseX + 15,mouseY - 5);
+        vertex(mouseX + 15,mouseY - 8);
+        vertex(mouseX + 275,mouseY - 8);
+        vertex(mouseX + 275,mouseY + 125);
+        vertex(mouseX + 15,mouseY + 125);
+        vertex(mouseX + 15,mouseY + 5);
+        vertex(mouseX,mouseY);
+        endShape();
+        noStroke();
+        
+        fill(173, 138, 0);
+        text(txt, mouseX + 20, mouseY - 3, 250, Infinity);
+    }
+};
+
 void draw() {
     background(backgroundColor);
     pattern();
@@ -500,6 +531,8 @@ void draw() {
     
     menuButton(width-25,height-25-menuY,function() {menuOut = !menuOut;});
     menu();
+    
+    helpIcon(120,20,'DNA is written in a code. The \'language\' of DNA is written with four nucleotides, Adenine, Thymine, Cytosine, and Guanine, commonly abbreviated to A T C G. A nucleotide is always paired up in a base-pair in the double-stranded DNA. Adenine always goes with Thymine, and Cytosine with Guanine, and vice-versa. The base-pairs are held together using Deoxyribose and Phosphate.');
     
     if (menuOut && menuY < 150) { menuY += (sq(((150-menuY)/30)) + 1)*2; }
     if (!menuOut && menuY > 0) { menuY -= (sq(menuY/30) + 1)*2; }
