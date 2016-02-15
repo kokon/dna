@@ -373,7 +373,7 @@ var menu = function() {
         fill(0, 0, 0, 20);
         if (mouseIn(width-598,height-menuY+28,80,40)) {
             rect(width-598,height-menuY+28,80,40);
-            if (mouseIsPressed) {
+            if (mousePressed) {
                 rect(width-598,height-menuY+28,80,40);
             }
             if (mouseIsClicked) {
@@ -383,7 +383,7 @@ var menu = function() {
         }
         if (mouseIn(width-598,height-menuY+68,80,40)) {
             rect(width-598,height-menuY+68,80,40);
-            if (mouseIsPressed) {
+            if (mousePressed) {
                 rect(width-598,height-menuY+68,80,40);
             }
             if (mouseIsClicked) {
@@ -393,7 +393,7 @@ var menu = function() {
         }
         if (mouseIn(width-598,height-menuY+108,80,40)) {
             rect(width-598,height-menuY+108,80,40);
-            if (mouseIsPressed) {
+            if (mousePressed) {
                 rect(width-598,height-menuY+108,80,40);
             }
             if (mouseIsClicked) {
