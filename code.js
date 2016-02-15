@@ -501,8 +501,8 @@ void draw() {
     menuButton(width-25,height-25-menuY,function() {menuOut = !menuOut;});
     menu();
     
-    if (menuOut && menuY < 150) { menuY += sq(((150-menuY)/30)) + 1; }
-    if (!menuOut && menuY > 0) { menuY -= sq(menuY/30) + 1; }
+    if (menuOut && menuY < 150) { menuY += (sq(((150-menuY)/30)) + 1)*2; }
+    if (!menuOut && menuY > 0) { menuY -= (sq(menuY/30) + 1)*2; }
     mouseIsClicked = false;
 };
 
