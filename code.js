@@ -437,7 +437,7 @@ var menu = function() {
             }
             if (mouseIsClicked) {
                 menuMode = 'rna';
-                menuMessage = 'Your DNA is stored in chromosomes in your nucleus, but it can’t read itself. Ten million ribosomes wait outside of the nucleus to do this for you. However, you have lots of DNA, so it can’t all go outside of the nucleus. Your cell makes a copy of the gene it wants to use, called mRNA, standing for messenger RiboNucleic Acid. The only difference is the nucleotide Thymine, in DNA, which gets turned into Uracil in the mRNA. The mRNA leaves the nucleus, now small enough to do so, and finds its way to a ribosome to begin translation. During translation, “codons”, or groups of 3 nucleotides, are read by tRNA, standing for transfer RNA, to be translated into amino acids, which are then made by the ribosomes to be used.';
+                menuMessage = 'Your DNA is stored in chromosomes in your nucleus, but it can’t read itself. Ten million ribosomes wait outside of the nucleus to do this for you. However, you have lots of DNA, so it can’t all go outside of the nucleus. Your cell makes a copy of the gene it wants to use, called mRNA, standing for messenger RiboNucleic Acid. The only difference is the nucleotide Thymine, in DNA, which gets turned into Uracil in the mRNA. The mRNA leaves the nucleus, now small enough to do so, and finds its way to a ribosome to begin translation. During translation, “codons”, or groups of 3 nucleotides, are read by tRNA, standing for transfer RNA, to be translated into amino acids, which are then made by the ribosomes to be used. Refer to the codon table for the various codons and amino acids that can be used in translation.';
             }
         }
         
