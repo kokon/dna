@@ -248,6 +248,45 @@ var legend = function() {
     fill(phosphateColor);
     rect(10,110,15,15);
     text('Phosphate',30,122);
+    
+    stroke(173, 138, 0);
+    fill(242, 211, 119);
+    //adenine box
+    if (mouseIn(10,10,70,15)) {
+        rect(8,30,60,20);
+        fill(173, 138, 0);
+        text('C5H5N5',15,45);
+    }
+    //thymine box
+    if (mouseIn(10,30,70,15)) {
+        rect(8,50,60,20);
+        fill(173, 138, 0);
+        text('C5H6N2O2',10,65);
+    }
+    //cytosine box
+    if (mouseIn(10,50,72,15)) {
+        rect(8,70,60,20);
+        fill(173, 138, 0);
+        text('C4H5N3O',10,85);
+    }
+    //guanine box
+    if (mouseIn(10,70,70,15)) {
+        rect(8,90,60,20);
+        fill(173, 138, 0);
+        text('C5H5N5O',10,105);
+    }
+    //deoxyribose box
+    if (mouseIn(10,90,90,15)) {
+        rect(8,110,60,20);
+        fill(173, 138, 0);
+        text('C5H10O4',10,125);
+    }
+    //phosphate box
+    if (mouseIn(10,110,80,15)) {
+        rect(8,130,60,20);
+        fill(173, 138, 0);
+        text('PO43-',10,145);
+    }
 };
 
 var pattern = function() {
