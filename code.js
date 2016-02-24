@@ -485,6 +485,85 @@ var helpIcon = function(x,y,txt) {
     }
 };
 
+var codon;
+var codons = [
+    [
+        ['UUU','UUC','UUA','UUG'],
+        ['UCU','UCC','UCA','UCG'],
+        ['UAU','UAC','UAA','UAG'],
+        ['UGU','UGC','UGA','UGG']
+    ],
+    [
+        ['CUU','CUC','CUA','CUG'],
+        ['CCU','CCC','CCA','CCG'],
+        ['CAU','CAC','CAA','CAG'],
+        ['CGU','CGC','CGA','CGG']
+    ],
+    [
+        ['AUU','AUC','AUA','AUG'],
+        ['ACU','ACC','ACA','ACG'],
+        ['AAU','AAC','AAA','AAG'],
+        ['AGU','AGC','AGA','AGG']
+    ],
+    [
+        ['GUU','GUC','GUA','GUG'],
+        ['GCU','GCC','GCA','GCG'],
+        ['GAU','GAC','GAA','GAG'],
+        ['GGU','GGC','GGA','GGG']
+    ]
+];
+var acid;
+var aPos;
+var aAcids = [
+    [
+        [['Phenylalanine',0,1],['Leucine',2,3]],
+        [['Serine',0,3]],
+        [['Tyrosine',0,1],['Stop Copying',2,3]],
+        [['Cysteine',0,1],['Stop Copying',2,2],['Tryptonphan',3,3]]
+    ],
+    [
+        [['Leucine',0,3]],
+        [['Proline',0,3]],
+        [['Histidine',0,1],['Glutamine',2,3]],
+        [['Arginine',0,3]]
+    ],
+    [
+        [['Isoleucine',0,1],['Methionine (start)',2,3]],
+        [['Threonine',0,3]],
+        [['Asparagine',0,1],['Lysine',2,3]],
+        [['Serine',0,1],['Arginine',2,3]]
+    ],
+    [
+        [['Valine',0,3]],
+        [['Alanine',0,3]],
+        [['Aspartic Acid',0,1],['Glutamic Acid',2,3]],
+        [['Glycine',0,3]]
+    ]
+];
+var tableOut = false;
+var codonTable = function(x,y) {
+    stroke(0, 0, 0);
+    fill(74, 74, 74, 200);
+    rect(x - 10,y - 20,440,315);
+    noStroke();
+    fill(0, 0, 0);
+    textSize(10);
+    for (var first = 0; first < codons.length; first ++) {
+        for (var second = 0; second < codons[first].length; second ++) {
+            for (var third = 0; third < codons[first][second].length; third ++) {
+                codon = codons[first][second][third];
+                text(codon,x + second * 110,y + first * 80 + third * 15);
+            }
+            for (var a = 0; a < aAcids[first][second].length; a ++) {
+                acid = aAcids[first][second][a][0];
+                aPos = aAcids[first][second][a][1] + (aAcids[first][second][a][2] - aAcids[first][second][a][1])/2;
+                text(acid,x + second * 110 + 25,y + first * 80 + aPos * 15);
+            }
+        }
+    }
+    textSize(12);
+};
+
 void draw() {
     background(backgroundColor);
     pattern();
@@ -567,6 +646,19 @@ void draw() {
     text('Transparent\nor\nOpaque',width-60,40);
     strokeWeight(1);
     textAlign(LEFT,BASELINE);
+    
+    //codon table
+    if (button(0,(tableOut) ? height-348 : height-30,80,30, function(x,y) {
+        fill(135, 135, 135);
+        rect(0,y,80,30);
+        fill(0, 0, 0);
+        text('Codon Table',5,y + 18);
+    })) {
+        tableOut = !tableOut;
+    }
+    if (tableOut) {
+        codonTable(10,height - 297);
+    }
     
     menuButton(width-25,height-25-menuY,function() {menuOut = !menuOut;});
     menu();
